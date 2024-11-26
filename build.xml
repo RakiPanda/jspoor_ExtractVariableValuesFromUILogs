@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<project name="jspoor" basedir=".">
+
+
+	<target name="init" description="initialization">
+		<property file="build.properties" />
+		<property name="aspectjtools" value="./lib/aspectjtools.jar" />
+		<patternset id="java.files.pattern" includes="**/*.java" />
+
+		<condition property="os.family" value="unix">
+			<os family="unix" />
+		</condition>
+		<condition property="os.family" value="windows">
+			<os family="windows" />
+		</condition>
+
+		<path id="compile.classpath">
+			<fileset dir="./lib" includes="*.jar" />
+			<fileset dir="${dir.build}" />
+		</path>
+	</target>
+
+	<target name="define-aspectj-tasks" depends="init">
+		<taskdef resource="org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties">
+			<classpath>
+				<pathelement location="${aspectjtools}" />
+			</classpath>
+		</taskdef>
+	</target>
+	<target name="clean" depends="define-aspectj-tasks" description="Removes build artifacts">
+
+		<delete dir="${dir.dist}" />
+		<delete dir="${dir.build}" />
+	</target>
+
+	<!-- makes the directories -->
+	<target name="prepare" depends="clean" description="prepares directories">
+		<mkdir dir="${dir.dist}" />
+		<mkdir dir="${dir.build}" />
+	</target>
+
+
+	<!-- compile swing client code -->
+	<target name="compile-java-files" depends="prepare" description="compiles java code">
+		<javac srcdir="${dir.src}/java" debug="on" destdir="${dir.build}" classpathref="compile.classpath" source="1.5" target="1.5" />
+	</target>
+
+
+	<target name="compile-aspectj-codes" depends="compile-java-files">
+		<ajc srcdir="${dir.src}/aspectj" destdir="${dir.build}" classpath="${dir.build}:./lib/aspectjrt.jar" />
+	</target>
+
+	<target name="make-jar" depends="compile-aspectj-codes" description="jars the application class files">
+
+		<copy todir="${dir.build}">
+			<fileset dir="${dir.src}/etc" />
+		</copy>
+
+		<jar destfile="${dir.dist}/jspoor.jar">
+			<fileset dir="${dir.build}" />
+			<manifest>
+				<attribute name="Class-Path" value=". jaccess.jar aspectjlib.jar aspectjrt.jar aspectjtools.jar aspectjweaver.jar" />
+				<attribute name="Main-Class" value="jspoor.statextract.ExtractVariableValuesFromUILogs" />
+			</manifest>
+		</jar>
+	</target>
+
+
+	<target name="default" depends="make-jar" />
+
+
+</project>
+

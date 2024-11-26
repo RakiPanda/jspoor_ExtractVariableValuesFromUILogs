@@ -1,0 +1,23 @@
+numOfSteps
+actionsCountInSteps
+NOVICE_NOVICE_HIGH,NOVICE_MODERATE_LOW,NOVICE_MODERATE_HIGH,NOVICE_SKILLED_LOW
+EXPERT_NOVICE_HIGH,EXPERT_MODERATE_LOW,EXPERT_MODERATE_HIGH,EXPERT_SKILLED_LOW
+MIN_PAUSE_DURATION
+step1KlmTime,...,stepNKlmTime
+minStep1Distance,...,minStepNDistance
+numOfResponseTimeActions
+RespTimeID,  responseTime, condition 
+.
+.
+.
+step1action1,...,step1actionN
+.
+.
+.
+stepNaction1,...,stepNactionN
+Step1PerformanceIndicator
+.
+.
+.
+StepNPerformanceIndicator
+startActionIndictor

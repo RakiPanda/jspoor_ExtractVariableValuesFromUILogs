@@ -1,0 +1,28 @@
+7
+2,6,5,7,2,2,2
+1,2,-6,7
+1,2,3,4
+150
+1.633,7.878,6.231,13.222,1.799,1.718,1.871
+30.01,1639.35,2130.93,1642.81,253.42,658.49,229.76
+5
+1,180,eventType=MENU_ITEM_SELECTED&eventSource=open
+2,430,eventType=MENU_ITEM_SELECTED&eventSource=copy
+3,150,eventType=MENU_ITEM_SELECTED&eventSource=paste
+4,220,eventType=MENU_ITEM_SELECTED&eventSource=sharpen
+5,80,eventType=MENU_ITEM_SELECTED&eventSource=save
+MENU_ITEM_SELECTED Open
+Dragged,MENU_ITEM_SELECTED Copy,MENU_ITEM_SELECTED Paste,Dragged
+BUTTON_PRESSED Pick Color,BUTTON_PRESSED Brush,BUTTON_PRESSED right3,Dragged
+BUTTON_PRESSED Text,KEY_PRESSED,COMBOBOX_SELECTED,COMBOBOX_SELECTED,BUTTON_PRESSED Ok
+MENU_ITEM_SELECTED Sharpen
+MENU_ITEM_SELECTED Save
+MENU_ITEM_SELECTED Exit
+eventType=MENU_ITEM_SELECTED&eventSource=open
+eventType=MOUSE_BUTTON_RELEASED&lastAction=MENU_ITEM_SELECTED&lastActionSource=Paste&prevNonMouseMoveEventType=MOUSE_DRAGGED
+eventType=MOUSE_BUTTON_RELEASED&prevNonMouseEventType=BUTTON_PRESSED&prevNonMouseEventSource=right3&prevNonMouseMoveEventType=MOUSE_DRAGGED 
+eventType=BUTTON_PRESSED&eventSource=Ok
+eventType=MENU_ITEM_SELECTED&eventSource=Sharpen
+eventType=MENU_ITEM_SELECTED&eventSource=save
+eventType=MENU_ITEM_SELECTED&eventSource=exit
+eventType=MENU_ITEM_NAVIGATED&eventSource=File
