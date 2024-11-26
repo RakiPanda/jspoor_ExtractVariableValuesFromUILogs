@@ -1,24 +1,37 @@
 package jspoor.uilog;
 
-import javax.swing.*;
-
+import java.awt.AWTEvent;
+import java.awt.Component;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.FocusEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.PrintWriter;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.event.* ;
-import java.util.EventObject;
+//日本語化のために導入
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.swing.*;
-
-
-//日本語化のために導入
-import java.io.OutputStreamWriter;
-import java.io.FileOutputStream;
+import javax.swing.AbstractButton;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeEvent;
 /**
  * this class is used for creating the log file and write an ui event on it. 
  * 
@@ -39,8 +52,10 @@ public class Logger {
 //        FileWriter outFile = null;
 
         try {
-			 SimpleDateFormat df = new SimpleDateFormat("EEE_d-MMM-yyyy_HH-mm-ss");
+			 SimpleDateFormat df = new SimpleDateFormat("MM_dd");
 			 File f= new File("./ui-log_"+df.format(new Date())+".txt" );
+			 String timestamp = new SimpleDateFormat().format(new Date());
+			 System.out.println("Generated Filename: ui-log_" + timestamp + ".txt");
 //			     outFile = new FileWriter(f,false);
 			       // JOptionPane.showMessageDialog(null, f.getAbsolutePath());
 			     //   System.out.println("f: "+f.getAbsolutePath());
@@ -62,9 +77,11 @@ public class Logger {
 //        FileWriter outFile = null;
     	loggingTerminated();
     	 try {
-			 SimpleDateFormat df = new SimpleDateFormat("EEE_d-MMM-yyyy_HH-mm-ss");
+			 SimpleDateFormat df = new SimpleDateFormat("MM_dd");
 //			     outFile = new FileWriter("./ui-log_"+df.format(new Date())+".txt", false);
 			 File f = new File("./ui-log_" + df.format(new Date()) + ".txt");
+			 String timestamp = new SimpleDateFormat().format(new Date());
+			 System.out.println("Generated Filename: ui-log_" + timestamp + ".txt");
 	            // OutputStreamWriterでエンコーディングを明示的に指定
 	            uilogout = new PrintWriter(
 	                new OutputStreamWriter(new FileOutputStream(f), "UTF-8"),
