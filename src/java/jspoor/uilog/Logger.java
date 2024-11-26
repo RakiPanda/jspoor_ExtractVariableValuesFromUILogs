@@ -15,6 +15,9 @@ import java.util.Date;
 
 import javax.swing.*;
 
+//日本語化のために導入
+import java.io.OutputStreamWriter;
+import java.io.FileOutputStream;
 /**
  * this class is used for creating the log file and write an ui event on it. 
  * 
@@ -32,34 +35,46 @@ public class Logger {
 
     private Logger() {
 		mouseMovesCount=0;
-        FileWriter outFile = null;
+//        FileWriter outFile = null;
 
         try {
 			 SimpleDateFormat df = new SimpleDateFormat("EEE_d-MMM-yyyy_HH-mm-ss");
 			 File f= new File("./ui-log_"+df.format(new Date())+".txt" );
-			     outFile = new FileWriter(f,false);
+//			     outFile = new FileWriter(f,false);
 			       // JOptionPane.showMessageDialog(null, f.getAbsolutePath());
 			     //   System.out.println("f: "+f.getAbsolutePath());
 			        
+	            // OutputStreamWriterでエンコーディングを明示的に指定
+	            uilogout = new PrintWriter(
+	                new OutputStreamWriter(new FileOutputStream(f), "UTF-8"),
+	                true // 自動フラッシュを有効化
+	            );
 			    
         } catch (IOException e) {
             e.printStackTrace();
         }
-        uilogout = new PrintWriter(outFile);
+//        uilogout = new PrintWriter(outFile);
         startTime=System.currentTimeMillis();
     }
 
     public void resetLogFile(){
     	mouseMovesCount=0;
-        FileWriter outFile = null;
+//        FileWriter outFile = null;
     	loggingTerminated();
     	 try {
 			 SimpleDateFormat df = new SimpleDateFormat("EEE_d-MMM-yyyy_HH-mm-ss");
-			     outFile = new FileWriter("./ui-log_"+df.format(new Date())+".txt", false);
+//			     outFile = new FileWriter("./ui-log_"+df.format(new Date())+".txt", false);
+			 File f = new File("./ui-log_" + df.format(new Date()) + ".txt");
+
+	            // OutputStreamWriterでエンコーディングを明示的に指定
+	            uilogout = new PrintWriter(
+	                new OutputStreamWriter(new FileOutputStream(f), "UTF-8"),
+	                true // 自動フラッシュを有効化
+	            );
         } catch (IOException e) {
             e.printStackTrace();
         }
-        uilogout = new PrintWriter(outFile);
+//        uilogout = new PrintWriter(outFile);
         startTime=System.currentTimeMillis();
     }
     public static Logger getInstance() {

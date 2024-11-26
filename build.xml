@@ -43,12 +43,12 @@
 
 	<!-- compile swing client code -->
 	<target name="compile-java-files" depends="prepare" description="compiles java code">
-		<javac srcdir="${dir.src}/java" debug="on" destdir="${dir.build}" classpathref="compile.classpath" source="1.5" target="1.5" />
+		<javac srcdir="${dir.src}/java" debug="on" destdir="${dir.build}" classpathref="compile.classpath" source="1.5" target="1.5" encoding="UTF-8"/>
 	</target>
 
 
 	<target name="compile-aspectj-codes" depends="compile-java-files">
-		<ajc srcdir="${dir.src}/aspectj" destdir="${dir.build}" classpath="${dir.build}:./lib/aspectjrt.jar" />
+		<ajc srcdir="${dir.src}/aspectj" destdir="${dir.build}" classpath="${dir.build}:./lib/aspectjrt.jar" compilerArgs="-encoding UTF-8" />
 	</target>
 
 	<target name="make-jar" depends="compile-aspectj-codes" description="jars the application class files">
