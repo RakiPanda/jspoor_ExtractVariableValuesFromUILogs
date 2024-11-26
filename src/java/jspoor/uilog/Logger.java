@@ -15,6 +15,7 @@ import java.util.Date;
 
 import javax.swing.*;
 
+
 //日本語化のために導入
 import java.io.OutputStreamWriter;
 import java.io.FileOutputStream;
@@ -44,12 +45,11 @@ public class Logger {
 			       // JOptionPane.showMessageDialog(null, f.getAbsolutePath());
 			     //   System.out.println("f: "+f.getAbsolutePath());
 			        
-	            // OutputStreamWriterでエンコーディングを明示的に指定
-	            uilogout = new PrintWriter(
-	                new OutputStreamWriter(new FileOutputStream(f), "UTF-8"),
-	                true // 自動フラッシュを有効化
-	            );
-			    
+		            // OutputStreamWriterでエンコーディングを明示的に指定
+		            uilogout = new PrintWriter(
+		                new OutputStreamWriter(new FileOutputStream(f), "UTF-8"),
+		                true // 自動フラッシュを有効化
+		            );
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,7 +65,6 @@ public class Logger {
 			 SimpleDateFormat df = new SimpleDateFormat("EEE_d-MMM-yyyy_HH-mm-ss");
 //			     outFile = new FileWriter("./ui-log_"+df.format(new Date())+".txt", false);
 			 File f = new File("./ui-log_" + df.format(new Date()) + ".txt");
-
 	            // OutputStreamWriterでエンコーディングを明示的に指定
 	            uilogout = new PrintWriter(
 	                new OutputStreamWriter(new FileOutputStream(f), "UTF-8"),
