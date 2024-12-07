@@ -1,2 +1,1 @@
-C:\user1
-C:\user2
+C:\00_test
