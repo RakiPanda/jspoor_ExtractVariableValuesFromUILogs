@@ -1,19 +1,21 @@
 package jspoor.statextract;
 
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.StringTokenizer;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGEncodeParam;
@@ -244,6 +246,15 @@ public class ExtractVariableValuesFromUILogs {
 
 	public static void main(String[] args) {
 		ExtractVariableValuesFromUILogs instance = new ExtractVariableValuesFromUILogs();
+		instance.extractAttributeValues(
+				"stepArffAS",
+				true,
+//                "C:\\columbauser\\ui-log_Sat_11-Apr-2009_16-36-39.txt",
+                "C:\\00_test\\logs\\ui-log_Fri_6-12-2024_16-50-45_task01_00_test.txt",
+                "skilled",
+                10, 
+                true, 
+                false);
 		 
 		 if ((args.length >2) &&
 				 (args[2].equals("-normalized")))instance.normalized=true;
